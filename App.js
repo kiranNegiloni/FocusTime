@@ -36,7 +36,7 @@ const App = () => {
           setFocusHistory([
             ...focusHistory,
             {
-              key: focusHistory.length + 1,
+              key: String(focusHistory.length + 1),
               subject: focusSubject,
               status: STATUS.cancelled,
             },
