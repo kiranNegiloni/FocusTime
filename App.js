@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState, useEffect } from "react";
+import { Text, View, StyleSheet } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { FocusInput } from './src/features/CreateFocus/FocusInput';
-import { FocusHistory } from './src/features/CreateFocus/FocusHistory';
-import { Timer } from './src/features/CreateTimer/Timer';
-import { colors } from './src/utils/colors';
+import { FocusInput } from "./src/features/CreateFocus/FocusInput";
+import { FocusHistory } from "./src/features/CreateFocus/FocusHistory";
+import { Timer } from "./src/features/CreateTimer/Timer";
+import { colors } from "./src/utils/colors";
 
 const STATUS = {
   completed: 1,
@@ -13,6 +13,7 @@ const STATUS = {
 };
 
 const App = () => {
+  console.log("Added console.log");
   const [focusSubject, setFocusSubject] = useState(null);
   const [focusHistory, setFocusHistory] = useState([]);
 
@@ -59,7 +60,7 @@ const App = () => {
 
   const saveFocusHistory = async () => {
     try {
-      await AsyncStorage.setItem('focusHistory', JSON.stringify(focusHistory));
+      await AsyncStorage.setItem("focusHistory", JSON.stringify(focusHistory));
     } catch (e) {
       console.log(e);
     }
@@ -67,7 +68,7 @@ const App = () => {
 
   const loadFocusHistory = async () => {
     try {
-      const history = await AsyncStorage.getItem('focusHistory');
+      const history = await AsyncStorage.getItem("focusHistory");
       setFocusHistory(JSON.parse(history));
     } catch (e) {
       console.log(e);
