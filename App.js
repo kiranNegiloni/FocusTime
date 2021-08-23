@@ -13,7 +13,6 @@ const STATUS = {
 };
 
 const App = () => {
-  console.log("Added console.log");
   const [focusSubject, setFocusSubject] = useState(null);
   const [focusHistory, setFocusHistory] = useState([]);
 
@@ -37,6 +36,7 @@ const App = () => {
           setFocusHistory([
             ...focusHistory,
             {
+              key: focusHistory.length + 1,
               subject: focusSubject,
               status: STATUS.cancelled,
             },
@@ -69,7 +69,9 @@ const App = () => {
   const loadFocusHistory = async () => {
     try {
       const history = await AsyncStorage.getItem("focusHistory");
-      setFocusHistory(JSON.parse(history));
+      if (history) {
+        setFocusHistory(JSON.parse(history));
+      }
     } catch (e) {
       console.log(e);
     }
